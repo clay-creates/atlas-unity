@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ea9347d9b750654439d578c727644633
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - scoreText: {instanceID: 0}
+  - healthText: {instanceID: 0}
+  - winLoseBG: {fileID: 5527635941739321990, guid: 25525aac53fc63b4aa3496cee89358ed,
+      type: 3}
+  - winLoseText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
