@@ -106,6 +106,12 @@ public class PlayerController : MonoBehaviour
         {
             ResetPlayerPosition();
         }
+
+        // Check for Escape key press to quit the game
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit(); // Quit the application
+        }
     }
 
     private void FixedUpdate() // Called once per fixed frame-rate frame
