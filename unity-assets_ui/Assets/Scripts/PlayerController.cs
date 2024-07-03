@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -107,12 +108,6 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < fallThreshold)
         {
             ResetPlayerPosition();
-        }
-
-        // Check for Escape key press to quit the game
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit(); // Quit the application
         }
     }
 

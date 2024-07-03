@@ -4,7 +4,9 @@ public class Timer : MonoBehaviour
 {
     public UnityEngine.UI.Text TimerText;
     private float elapsedTime = 0f;
+
     private bool isRunning = false;
+    private bool isPaused = false;
 
     void Start()
     {
@@ -19,10 +21,22 @@ public class Timer : MonoBehaviour
     }
 
     void Update()
-    {
-        elapsedTime += Time.deltaTime;
-        UpdateTimerText(elapsedTime);
-        Debug.Log($"Timer running: {elapsedTime}");
+    { 
+        if (isRunning)
+        {
+           isPaused = false;
+           elapsedTime += Time.deltaTime;
+           UpdateTimerText(elapsedTime);
+           Debug.Log($"Timer running: {elapsedTime}");
+        }
+
+        if (isPaused)
+        {
+            isRunning = false;
+            UpdateTimerText(elapsedTime);
+            Debug.Log("Timer is paused.");
+        }
+        
     }
 
     private void UpdateTimerText(float time)
@@ -37,12 +51,14 @@ public class Timer : MonoBehaviour
     public void StartTimer()
     {
         isRunning = true;
+        isPaused = false;
         Debug.Log("Timer started");
     }
 
     public void StopTimer()
     {
         isRunning = false;
+        isPaused = true;
         Debug.Log("Timer stopped");
     }
 

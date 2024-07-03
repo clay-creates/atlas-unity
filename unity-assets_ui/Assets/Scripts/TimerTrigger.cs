@@ -21,6 +21,7 @@ public class TimerTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             TimerScript.enabled = true;
+            TimerScript.StartTimer();
         }
     }
 }
