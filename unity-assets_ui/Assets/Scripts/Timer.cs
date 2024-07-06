@@ -1,8 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
     public UnityEngine.UI.Text TimerText;
+    public TextMeshProUGUI FinalTimeText;
+    public GameObject WinCanvas;
     private float elapsedTime = 0f;
 
     private bool isRunning = false;
@@ -17,6 +20,15 @@ public class Timer : MonoBehaviour
         else
         {
             TimerText.text = "0:00.00";
+        }
+
+        if (WinCanvas != null)
+        {
+            WinCanvas.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("WinCanvas is not assigned in the inspector");
         }
     }
 
@@ -68,5 +80,24 @@ public class Timer : MonoBehaviour
         TimerText.text = "0:00.00";
         isRunning = false;
         Debug.Log("Timer reset");
+    }
+
+    public void Win()
+    {
+        StopTimer();
+        if (FinalTimeText != null)
+        {
+            FinalTimeText.text = TimerText.text;
+        }
+
+        if (WinCanvas  != null)
+        {
+            WinCanvas.SetActive(true);
+        }
+
+        if (TimerText != null)
+        {
+            TimerText.enabled = false;
+        }
     }
 }

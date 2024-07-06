@@ -1,28 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WinTrigger : MonoBehaviour
 {
+    public Timer TimerScript;
 
-    public Timer timerScript;
-    public UnityEngine.UI.Text timerText;
-
-    private void OnTriggerEnter(Collider other)
+    void Start()
     {
-        if (timerScript != null)
+        if (TimerScript == null)
         {
-            timerScript.enabled = false;
-            UpdateTimerTextAppearance();
+            Debug.LogError("Timer Script is not assigned in inspector");
         }
     }
 
-    private void UpdateTimerTextAppearance()
+    private void OnTriggerEnter(Collider other)
     {
-        if (timerText != null)
+        if (other.CompareTag("Player"))
         {
-            timerText.fontSize = 80;
-            timerText.color = Color.green;
+            TimerScript.Win(); // Call Win method when the player touches the flag
         }
     }
 }

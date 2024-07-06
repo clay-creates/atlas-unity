@@ -53,7 +53,6 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         PauseCanvas.SetActive(false);
-        // Time.timeScale = 1f;
         PlayTimer.StartTimer();
     }
 
