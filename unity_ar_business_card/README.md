@@ -42,7 +42,7 @@ You can download the demo builds of the project for Android and iOS from the fol
 ## Image Target
 You can use the following image target to experience the AR business card. Either print it out or display it on another device for scanning.
 
-![Image Target Placeholder]
+![ar_marker](https://github.com/user-attachments/assets/b8414237-c0fb-4162-9d7d-9d767193ec38)
 
 ## Future Improvements
 - Adding additional interactive features such as 3D models or more dynamic animations.
