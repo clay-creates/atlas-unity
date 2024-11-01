@@ -1,47 +1,55 @@
 # Atlas Unity
 
-**Atlas Unity** is an ongoing 3D platformer project developed in Unity. This project has been built over several months, with each iteration improving upon the last. Below is a breakdown of the different components and stages of development included in this repository.
+![Atlas Unity in Action](path-to-screenshot.png)
+
+**Atlas Unity** is a comprehensive 3D platformer and AR/VR project hub, compiled from months of iterative development in Unity. This repository showcases various Unity projects, from early experiments to polished iterations, each building toward creating visually engaging and technically refined applications. The main project is a 3D platformer game, but the repository also includes AR and VR mini-projects, making it a versatile reference point for Unity developers.
 
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Folders and Files](#folders-and-files)
+- [Project Components](#project-components)
 - [Attribution](#attribution)
 - [How to Contribute](#how-to-contribute)
 - [License](#license)
 
 ## Project Overview
 
-Atlas Unity started as a simple 3D platformer and has gradually evolved into a comprehensive project with several key components, including animations, custom assets, UI elements, and more. The main goal of the project is to create an engaging and visually appealing platformer that leverages the power of Unity’s capabilities while experimenting with new techniques and ideas.
+Atlas Unity began as a simple 3D platformer project and expanded into a hub of Unity experiences, each iteration refining various aspects such as animations, user interface, audio, and AR integration. This evolution reflects both technical growth and design experimentation, with a focus on leveraging Unity’s robust features to produce dynamic and interactive experiences. The goal is to offer users a deep dive into Unity’s potential for cross-disciplinary applications.
 
-## Folders and Files
+## Project Components
 
-Here's a brief overview of the key folders and files in this repository:
+The repository includes several sub-projects, each of which highlights different Unity skills and techniques:
 
 ### `unity-animation`
-Contains all the animations used in the project. These animations bring the characters, environment, and UI elements to life, enhancing the overall player experience.
+An iteration of our 3D platformer game where animations were added to the player model, enhancing interactivity and visual feedback.
+
+### `unity-ar_slingshot_game`
+An ongoing project to create an AR slingshot game, using mechanics inspired by Angry Birds and Pokémon Go. The game incorporates slingshot physics and plane detection to place targets in augmented reality.
 
 ### `unity-assets_models_textures`
-This folder contains 3D models and textures used throughout the project. These assets include the characters, environment pieces, and any other in-game objects.
+The first iteration of our 3D platformer, focusing on building level assets and scenery for an immersive first level.
 
 ### `unity-assets_ui`
-This folder is dedicated to the user interface assets, including buttons, icons, and other visual elements that make up the game's UI.
+This iteration introduced user interface elements, including menus, HUD, and a pause menu, establishing the project’s visual and interactive framework.
 
 ### `unity-user_interface`
-Here, you’ll find the scripts and scenes related to the user interface, including menus, HUD elements, and any other on-screen displays.
+A foundational project where we explored Unity’s user interface tools, following structured tasks to demonstrate proficiency in UI design and interactivity.
+
+### `unity_ar_business_card`
+An augmented reality business card created with Vuforia. When scanned, it displays a digital business card with interactive buttons and animations, offering a unique way to share contact information.
+
+### `unity_audio`
+The final iteration of our 3D platformer, focusing on audio integration. We added sounds to the player and environment, enriching the user experience with spatial audio cues.
 
 ### `unity_concepts`
-This folder houses conceptual work, including prototypes, prefabs, and experimental features that may or may not make it into the final game.
+This project focused on foundational Unity concepts, such as physics materials, prefabs, and custom materials, used to enhance gameplay dynamics and visual consistency.
 
 ### `unity_publishing`
-This folder includes files related to the game's build process and publishing. It contains settings and configurations necessary for preparing the game for release.
-
-### `.gitignore`
-Standard `.gitignore` file to exclude unnecessary files from version control.
+An early project exploring the basics of building and publishing games in Unity, including configuring build settings for proper game distribution.
 
 ## Attribution
 
-This project uses audio clips and other assets from the following sources:
+The Atlas Unity projects uses audio clips, models, and textures from these sources:
 
 - **Kenney**: [https://kenney.nl/](https://kenney.nl/)
 - **Oculus Audio Pack**: [https://developer.oculus.com/downloads/package/oculus-audio-pack-1/](https://developer.oculus.com/downloads/package/oculus-audio-pack-1/)
@@ -52,16 +60,19 @@ This project uses audio clips and other assets from the following sources:
 
 ## How to Contribute
 
-Contributions are welcome! If you would like to contribute to this project, please follow these steps:
+Contributions are welcome! Here’s how to get involved:
 
 1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Commit your changes.
-4. Push your branch to your fork.
-5. Submit a pull request.
+2. Create a branch for your feature or bug fix.
+3. Commit and push your changes to your branch.
+4. Open a pull request, describing your changes and their benefits to the project.
 
-Please ensure your code adheres to the coding standards used in this project.
+Please ensure that all contributions follow the coding standards outlined in this repository.
 
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+## About the Developer
+
+I’m [Clay Jones](https://www.linkedin.com/in/clayjones/), a UX Engineer and Software Developer from Tulsa, Oklahoma. I created Atlas Unity as a testament to the possibilities of Unity’s game development ecosystem, blending my passion for creating interactive worlds with a technical focus on performance and usability. You can explore more of my work on [GitHub](https://github.com/clayjones/).
