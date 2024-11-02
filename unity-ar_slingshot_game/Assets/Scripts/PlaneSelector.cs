@@ -18,10 +18,17 @@ public class PlaneSelector : MonoBehaviour
 
     private TouchActions touchActions;
 
+    private bool gameStarted = false;
+
     private void Awake()
     {
         raycastManager = GetComponent<ARRaycastManager>();
         planeManager = GetComponent<ARPlaneManager>();
+
+        if (raycastManager == null || planeManager == null )
+        {
+            Debug.LogError("ARRaycastManager or ARPlaneManager is missing");
+        }
 
         touchActions = new TouchActions();
         EnhancedTouch.EnhancedTouchSupport.Enable();
@@ -44,12 +51,14 @@ public class PlaneSelector : MonoBehaviour
     private void OnDisable()
     {
         EnhancedTouch.Touch.onFingerDown -= OnFingerDown;
-        EnhancedTouch.EnhancedTouchSupport.Disable();
         touchActions.Disable();
+        EnhancedTouch.EnhancedTouchSupport.Disable();
     }
 
     private void OnFingerDown(EnhancedTouch.Finger finger)
     {
+        if (gameStarted) return;
+
         Vector2 touchPosition = finger.screenPosition;
         Ray ray = Camera.main.ScreenPointToRay(touchPosition);
 
@@ -65,6 +74,11 @@ public class PlaneSelector : MonoBehaviour
 
     private void SelectPlane(ARPlane plane)
     {
+        if (selectedPlane != null && selectedPlane != plane)
+        {
+            ResetPlaneAppearance(selectedPlane);
+        }
+
         selectedPlane = plane;
 
         if (gameManager != null)
@@ -74,6 +88,15 @@ public class PlaneSelector : MonoBehaviour
 
         HighlightSelectedPlane(plane);
         DisableOtherPlanes();
+    }
+
+    private void ResetPlaneAppearance(ARPlane plane)
+    {
+        MeshRenderer planeRenderer = plane.GetComponent<MeshRenderer>();
+        if (planeRenderer != null && defaultMaterial != null)
+        {
+            planeRenderer.material = defaultMaterial;
+        }
     }
 
     private void HighlightSelectedPlane(ARPlane plane)
@@ -91,6 +114,8 @@ public class PlaneSelector : MonoBehaviour
         {
             gameManager.ActivateGameUI();
         }
+
+        gameStarted = true;
     }
 
     private void DisableOtherPlanes()
@@ -99,11 +124,7 @@ public class PlaneSelector : MonoBehaviour
         {
             if (plane != selectedPlane)
             {
-                MeshRenderer planeRenderer = plane.GetComponent<MeshRenderer>();
-                if (planeRenderer != null && defaultMaterial != null)
-                {
-                    planeRenderer.material = defaultMaterial;
-                }
+                ResetPlaneAppearance(plane);
                 plane.gameObject.SetActive(false);
             }
         }

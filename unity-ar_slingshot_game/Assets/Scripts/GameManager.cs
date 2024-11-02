@@ -1,4 +1,10 @@
+using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
+using UnityEngine.InputSystem;
+using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,17 +13,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject planeSearchText;
     [SerializeField] private GameObject ammoGroup;
     [SerializeField] private GameObject scoreText;
-    // [SerializeField] private GameObject pauseButton;
+
+    [SerializeField] private TargetSpawner targetSpawner;
+    [SerializeField] private Camera arCamera;
+
+    private bool gameStarted = false;
 
     public void InitializeUI()
     {
         // Initial state for the UI
         startButton.SetActive(false);
-        selectPlaneButton.SetActive(true);
+        selectPlaneButton.SetActive(false);
         planeSearchText.SetActive(true);
         ammoGroup.SetActive(false);
         scoreText.SetActive(false);
-        // pauseButton.SetActive(false);
     }
 
     public void ShowSelectPlaneButton()
@@ -36,10 +45,26 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        // Activates game-specific UI elements when Start is pressed
+        if (gameStarted)
+        {
+            Debug.LogWarning("Game already started. Ignoring additional input");
+            return;
+        }
+
+        gameStarted = true;
         startButton.SetActive(false);
         ammoGroup.SetActive(true);
         scoreText.SetActive(true);
-        // pauseButton.SetActive(true);
+
+        if (PlaneSelector.selectedPlane != null && targetSpawner != null && arCamera != null)
+        {
+            targetSpawner.SetSelectedPlane(PlaneSelector.selectedPlane);
+            targetSpawner.SetARCamera(arCamera);
+            targetSpawner.SpawnTargets();
+        }
+        else
+        {
+            Debug.LogError("Selected plane or target spawner is not set");
+        }
     }
 }
