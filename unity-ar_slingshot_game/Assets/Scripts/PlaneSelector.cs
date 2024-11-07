@@ -1,58 +1,40 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
-using UnityEngine.InputSystem;
 using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
-using System.Collections.Generic;
 
 public class PlaneSelector : MonoBehaviour
 {
     public static ARPlane selectedPlane = null;
-
     public GameManager gameManager;
+
     private ARRaycastManager raycastManager;
     private ARPlaneManager planeManager;
+    private bool gameStarted = false;
 
     public Material defaultMaterial;
     public Material highlightMaterial;
-
-    private TouchActions touchActions;
-
-    private bool gameStarted = false;
 
     private void Awake()
     {
         raycastManager = GetComponent<ARRaycastManager>();
         planeManager = GetComponent<ARPlaneManager>();
 
-        if (raycastManager == null || planeManager == null )
-        {
-            Debug.LogError("ARRaycastManager or ARPlaneManager is missing");
-        }
-
-        touchActions = new TouchActions();
         EnhancedTouch.EnhancedTouchSupport.Enable();
     }
 
     private void Start()
     {
-        if (gameManager != null)
-        {
-            gameManager.InitializeUI();
-        }
+        gameManager?.InitializeUI();
     }
 
     private void OnEnable()
     {
-        touchActions.Enable();
         EnhancedTouch.Touch.onFingerDown += OnFingerDown;
     }
 
     private void OnDisable()
     {
         EnhancedTouch.Touch.onFingerDown -= OnFingerDown;
-        touchActions.Disable();
-        EnhancedTouch.EnhancedTouchSupport.Disable();
     }
 
     private void OnFingerDown(EnhancedTouch.Finger finger)
@@ -80,19 +62,14 @@ public class PlaneSelector : MonoBehaviour
         }
 
         selectedPlane = plane;
-
-        if (gameManager != null)
-        {
-            gameManager.ShowSelectPlaneButton();
-        }
-
+        gameManager?.ShowSelectPlaneButton();
         HighlightSelectedPlane(plane);
         DisableOtherPlanes();
     }
 
     private void ResetPlaneAppearance(ARPlane plane)
     {
-        MeshRenderer planeRenderer = plane.GetComponent<MeshRenderer>();
+        var planeRenderer = plane.GetComponent<MeshRenderer>();
         if (planeRenderer != null && defaultMaterial != null)
         {
             planeRenderer.material = defaultMaterial;
@@ -101,7 +78,7 @@ public class PlaneSelector : MonoBehaviour
 
     private void HighlightSelectedPlane(ARPlane plane)
     {
-        MeshRenderer planeRenderer = plane.GetComponent<MeshRenderer>();
+        var planeRenderer = plane.GetComponent<MeshRenderer>();
         if (planeRenderer != null && highlightMaterial != null)
         {
             planeRenderer.material = highlightMaterial;
@@ -110,11 +87,7 @@ public class PlaneSelector : MonoBehaviour
 
     public void ConfirmPlaneSelection()
     {
-        if (gameManager != null)
-        {
-            gameManager.ActivateGameUI();
-        }
-
+        gameManager?.ActivateGameUI();
         gameStarted = true;
     }
 

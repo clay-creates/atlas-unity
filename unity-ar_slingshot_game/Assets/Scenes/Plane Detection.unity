@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eecfa96ed56e2744e8f97802112f2f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 0.5
 --- !u!1 &432283745
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,7 +2541,21 @@ MonoBehaviour:
   selectPlaneButton: {fileID: 1224481154}
   planeSearchText: {fileID: 1754719202}
   ammoGroup: {fileID: 34201968}
-  scoreText: {fileID: 2090932002}
+  scoreText: {fileID: 2090932004}
+  restartButton: {fileID: 460830814}
+  leaderboardButton: {fileID: 1902079007}
+  leaderboardCanvas: {fileID: 1055744723}
+  ammoImages:
+  - {fileID: 1737701555}
+  - {fileID: 960509228}
+  - {fileID: 2022089345}
+  - {fileID: 929364996}
+  - {fileID: 1588598688}
+  - {fileID: 432283745}
+  - {fileID: 1118064926}
+  - {fileID: 645028278}
+  ammoPrefab: {fileID: 2736310270966485924, guid: 782ce4704809c7443973eb6219d7c5fe,
+    type: 3}
   targetSpawner: {fileID: 925490964}
   arCamera: {fileID: 854358914}
 --- !u!4 &1215468881

@@ -1,9 +1,5 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
-using UnityEngine.InputSystem;
-using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
-using System.Collections.Generic;
 
 public class TargetSpawner : MonoBehaviour
 {
@@ -23,10 +19,10 @@ public class TargetSpawner : MonoBehaviour
     }
 
     public void SpawnTargets()
+    {
+        if (selectedPlane == null || arCamera == null)
         {
-        if (selectedPlane == null && arCamera == null)
-        {
-            Debug.LogError("Selected plane or AR Camera is not set");
+            Debug.LogError("Selected plane or AR Camera is not set.");
             return;
         }
 
@@ -49,7 +45,7 @@ public class TargetSpawner : MonoBehaviour
         Vector2 planeSize = plane.size;
 
         float randomX = Random.Range(-planeSize.x / 2, planeSize.x / 2);
-        float randomZ = Random.Range(-planeSize.y /2, planeSize.y / 2);
+        float randomZ = Random.Range(-planeSize.y / 2, planeSize.y / 2);
 
         return planeCenter + new Vector3(randomX, 0, randomZ);
     }
@@ -57,8 +53,11 @@ public class TargetSpawner : MonoBehaviour
     private float CalculateScaleFactor(ARPlane plane, Camera camera)
     {
         float distance = Vector3.Distance(camera.transform.position, plane.center);
+        return Mathf.Clamp(1 / distance, 0.05f, 0.2f);
+    }
 
-        float scaleFactor = Mathf.Clamp(1 / distance, 0.05f, 0.2f);
-        return scaleFactor;
+    public int GetTargetCount()
+    {
+        return targetCount;
     }
 }
