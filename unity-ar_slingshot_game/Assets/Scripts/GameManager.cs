@@ -151,37 +151,14 @@ public class GameManager : MonoBehaviour
     private void InstantiateAmmo()
     {
         Debug.Log("GameManager: Instantiating ammo.");
-        if (currentAmmoInstance != null)
-        {
-            Debug.Log("GameManager: Destroying existing ammo before creating new one");
-            Destroy(currentAmmoInstance);
-        }
-
         if (ammoPrefab != null && arCamera != null)
         {
-            Debug.Log("GameManager: Instantiating ammo.");
-
             Vector3 spawnPosition = arCamera.transform.position + arCamera.transform.forward * 1f;
             currentAmmoInstance = Instantiate(ammoPrefab, spawnPosition, Quaternion.identity);
-
-            float scaleFactor = Screen.width * .0025f;
-            currentAmmoInstance.transform.localScale = Vector3.one * scaleFactor;
-            Debug.Log($"GameManager: Ammo instantiated at {spawnPosition} with scale factor {scaleFactor}");
-
-            AmmoBehavior ammoBehavior = currentAmmoInstance.GetComponent<AmmoBehavior>();
-            if (ammoBehavior != null)
-            {
-                Debug.Log("GameManager: Setting GameManager reference in AmmoBehavior");
-                ammoBehavior.SetGameManager(this);
-            }
-            else
-            {
-                Debug.LogWarning("GameManager: AmmoBehavior component missing on ammo instance");
-            }
         }
         else
         {
-            Debug.LogError("GameManager: Ammo prefab or AR Camera is not assigned.");
+            Debug.LogError("GameManager: Ammo prefab or AR Camera not set.");
         }
     }
 }

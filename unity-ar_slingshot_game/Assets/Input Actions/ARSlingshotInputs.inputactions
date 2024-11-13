@@ -1,0 +1,94 @@
+{
+    "name": "ARSlingshotInputs",
+    "maps": [
+        {
+            "name": "Slingshot",
+            "id": "e01164e8-f159-48d2-bbb9-993f4c63b019",
+            "actions": [
+                {
+                    "name": "Touch Position",
+                    "type": "Value",
+                    "id": "66c8ef7c-32d5-47ce-8141-02acf43a7e48",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Touch Press",
+                    "type": "Button",
+                    "id": "51ebde34-3723-489b-b9aa-fe2de99cdcdf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Start Drag",
+                    "type": "Value",
+                    "id": "f6ac2701-f253-44b5-8e61-ecfa20034479",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "End Drag",
+                    "type": "Value",
+                    "id": "679de238-1bf9-4b5f-9e99-3c10ce04481e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "73ec5deb-1487-4761-ba85-a935c857efcc",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b577f384-b821-4d9b-afcc-14b01bf8fac7",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4e48e09-78ba-464f-bf32-84420d290584",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75f1c69c-09d6-4bd4-90fe-d1ff514a9dcb",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "End Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
